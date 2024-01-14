@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox fx:id="vbox1" alignment="CENTER" maxHeight="290.0" maxWidth="450.0" minHeight="287.0" minWidth="434.0" prefHeight="287.0" prefWidth="434.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="music.HelloController">
+<VBox fx:id="vbox1" alignment="CENTER" maxHeight="290.0" maxWidth="450.0" minHeight="280.0" minWidth="429.0" prefHeight="280.0" prefWidth="429.0" snapToPixel="false" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="music.HelloController">
     <padding>
         <Insets left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -30,7 +30,7 @@
       <children>
          <ScrollPane fx:id="songs" prefHeight="232.0" prefWidth="158.0" style="-fx-border-color: black; -fx-background-color: black;">
            <content>
-             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="207.0" style="-fx-background-color: black;" />
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="207.0" style="-fx-background-color: black;" />
            </content>
          </ScrollPane>
          <BorderPane prefHeight="161.0" prefWidth="296.0" GridPane.columnIndex="2">
@@ -55,10 +55,11 @@
                        </rowConstraints>
                         <children>
                            <Button mnemonicParsing="false" onAction="#previous" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: gray;" text="⏮" textAlignment="CENTER" />
-                           <Button mnemonicParsing="false" onAction="#next" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: gray;" text="⏭" textAlignment="CENTER" GridPane.columnIndex="2" />
+                           <Button mnemonicParsing="false" onAction="#autoplay" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: gray;" text="⏭" textAlignment="CENTER" GridPane.columnIndex="2" />
                            <Button fx:id="playPauseButton" mnemonicParsing="false" onAction="#playPause" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: gray;" text="▶" GridPane.columnIndex="1" />
                         </children>
                      </GridPane>
+                     <Slider fx:id="progressSlider" prefHeight="14.0" prefWidth="96.0" />
                   </children>
                </GridPane>
             </bottom>
@@ -82,7 +83,7 @@
                        </rowConstraints>
                         <children>
                            <Button fx:id="stopButton" maxHeight="26.0" mnemonicParsing="false" onAction="#stop" prefHeight="18.0" prefWidth="52.0" style="-fx-background-color: gray;" text="Stop" textAlignment="CENTER" />
-                           <Label prefHeight="18.0" prefWidth="55.0" text="⮎⮌" textAlignment="CENTER" textFill="#5ec9ff" GridPane.rowIndex="1" />
+                           <Button fx:id="randomButton" mnemonicParsing="false" onAction="#randomButton" style="-fx-background-color: black;" text="⮎⮌" textFill="#919191" GridPane.rowIndex="1" />
                         </children>
                      </GridPane>
                   </children>
