@@ -18,6 +18,9 @@ public class HelloApplication extends Application {
         stage.setTitle("Music Player");
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
+        stage.setWidth(430);
+        stage.setHeight(300);
 
     }
 
