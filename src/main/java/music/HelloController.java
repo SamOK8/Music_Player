@@ -1,19 +1,11 @@
 package music;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
-import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.media.MediaPlayer;
@@ -35,16 +27,13 @@ public class HelloController implements Initializable {
     private Label songLabel;
     @FXML
     private Button playPauseButton;
-    @FXML
-    private Label openButton;
+
     @FXML
     private Slider progressSlider;
     @FXML
     private Slider volumeSlider;
     @FXML
     private ScrollPane songs;
-    @FXML
-    private VBox vbox1;
     @FXML
     private Button randomButton;
 
@@ -83,7 +72,7 @@ public class HelloController implements Initializable {
     public void playPause() {
         if (!isPlaying) {
             play();
-        } else if (isPlaying) {
+        } else {
             pause();
             playPauseButton.setText("▶");
         }
@@ -125,24 +114,21 @@ public class HelloController implements Initializable {
         }
         songs.setContent(pane);
         changeSong(0);
-        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                mediaPlayer.setVolume(newValue.doubleValue() / 100));
+        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> mediaPlayer.setVolume(newValue.doubleValue() / 100));
         volumeSlider.setValue(100);
 
-        progressSlider.valueProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    if (progressSlider.isPressed()) {
-                        Duration total = media.getDuration();
-                        System.out.println();
-                        double value = newValue.doubleValue();
-                        Duration position = total.multiply(value/100);
-                        System.out.println(position);
-                        mediaPlayer.stop();
-                        mediaPlayer.setStartTime(position);
-                        mediaPlayer.play();
-                    }
-                }
-        );
+        progressSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (progressSlider.isPressed()) {
+                Duration total = media.getDuration();
+                System.out.println();
+                double value = newValue.doubleValue();
+                Duration position = total.multiply(value / 100);
+                System.out.println(position);
+                mediaPlayer.stop();
+                mediaPlayer.setStartTime(position);
+                mediaPlayer.play();
+            }
+        });
     }
 
     public void previous() {
@@ -178,13 +164,14 @@ public class HelloController implements Initializable {
 
         }
     }
+
     //#5ec9ff
     public void randomButton() {
-        if (random){
+        if (random) {
             random = false;
             randomButton.setStyle("-fx-background-color: black; -fx-text-fill: #919191;");
 
-        }else {
+        } else {
             random = true;
             randomButton.setStyle("-fx-background-color: black; -fx-text-fill: #5ec9ff;");
         }
@@ -194,12 +181,13 @@ public class HelloController implements Initializable {
     public void autoplay() {
         if (!random) {
             next();
-        } else if (random) {
+        } else {
             randomNext();
         }
 
 
     }
+
     public void changeSong(int index) {
         if (files != null) {
             media = new Media(files[index].toURI().toString());
@@ -226,7 +214,7 @@ public class HelloController implements Initializable {
         task = new TimerTask() {
             @Override
             public void run() {
-                if (mediaPlayer!=null) {
+                if (mediaPlayer != null) {
                     double total = media.getDuration().toSeconds();
                     double current = mediaPlayer.getCurrentTime().toSeconds();
                     if (!progressSlider.isPressed()) {
