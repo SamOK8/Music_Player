@@ -34,13 +34,10 @@ public class HelloController implements Initializable {
     @FXML
     private Slider volumeSlider;
     @FXML
-    private ProgressBar progressBar;
-    @FXML
     private ScrollPane songs;
     @FXML
     private VBox vbox1;
-    @FXML
-    private Pane pane1;
+
 
 
     private File directory;
@@ -49,8 +46,7 @@ public class HelloController implements Initializable {
     private int setIndex;
     Boolean isPlaying = false;
     private double volume = 100;
-    private Timer timer;
-    private TimerTask task;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -159,15 +155,6 @@ public class HelloController implements Initializable {
         playPauseButton.setText("⏸");
 
 
-    }
-    public void beginTimer() {
-        timer = new Timer();
-
-        task = new TimerTask() {
-            public void run() {
-
-            }
-        };
     }
 
 }
